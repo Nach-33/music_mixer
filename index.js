@@ -1,33 +1,34 @@
 const boxes = document.querySelectorAll(".beat-box-bass");
 const snares = document.querySelectorAll(".beat-box-snare");
 const hihats = document.querySelectorAll(".beat-box-hihat");
+let beatTimeout = 250;
 
 boxes.forEach((box) => {
   box.addEventListener("click", function handleClick(event) {
-    if (box.classList.contains("box-active")) {
-      box.classList.remove("box-active");
+    if (box.classList.contains("box-active-bass")) {
+      box.classList.remove("box-active-bass");
     } else {
-      box.classList.add("box-active");
+      box.classList.add("box-active-bass");
     }
   });
 });
 
 snares.forEach((box) => {
   box.addEventListener("click", function handleClick(event) {
-    if (box.classList.contains("box-active")) {
-      box.classList.remove("box-active");
+    if (box.classList.contains("box-active-snare")) {
+      box.classList.remove("box-active-snare");
     } else {
-      box.classList.add("box-active");
+      box.classList.add("box-active-snare");
     }
   });
 });
 
 hihats.forEach((box) => {
   box.addEventListener("click", function handleClick(event) {
-    if (box.classList.contains("box-active")) {
-      box.classList.remove("box-active");
+    if (box.classList.contains("box-active-hihat")) {
+      box.classList.remove("box-active-hihat");
     } else {
-      box.classList.add("box-active");
+      box.classList.add("box-active-hihat");
     }
   });
 });
@@ -39,16 +40,16 @@ const fun = (i) => {
     hihats[i - 1].classList.remove("at-play");
   }
   i = i % boxes.length;
-  if (boxes[i].classList.contains("box-active")) {
+  if (boxes[i].classList.contains("box-active-bass")) {
     var audio = new Audio("./sounds/Bass.mp3");
     audio.play();
   }
-  if (snares[i].classList.contains("box-active")) {
+  if (snares[i].classList.contains("box-active-snare")) {
     var audio = new Audio("./sounds/Snare.mp3");
     audio.play();
   }
-  if (hihats[i].classList.contains("box-active")) {
-    var audio = new Audio("./sounds/Snare.mp3");
+  if (hihats[i].classList.contains("box-active-hihat")) {
+    var audio = new Audio("./sounds/Hi-Hat.mp3");
     audio.play();
   }
   boxes[i].classList.add("at-play");
@@ -56,10 +57,11 @@ const fun = (i) => {
   hihats[i].classList.add("at-play");
   setTimeout(() => {
     fun(i + 1);
-  }, 100);
+  }, beatTimeout);
 };
 
 const handlePlay = () => {
+  const beatTimeout = document.getElementById('beat-timeout').value;
   fun(0);
 };
 
