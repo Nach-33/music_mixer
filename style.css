@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: monospace;
+    font-size: larger;
+}
+
+#main{
+    min-height: 100vh;
+}
+
+.beat-box{
+    height: 3rem;
+    width: 3rem;
+    margin: 1rem;
+    border-radius: 0.3rem;
+    background-color: whitesmoke;
+    border: 3px solid rgb(67, 64, 64);
+    transition-duration: 200ms;
+}
+
+.box-active{
+    border: 3px solid black;
+    background-color: rgb(128, 32, 32);
+}
+
+.at-play{
+    transform: scale(1.2);
+}
